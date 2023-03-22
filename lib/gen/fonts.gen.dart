@@ -8,8 +8,8 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: Number
-  static const String number = 'Number';
+  /// Font family: Roboto
+  static const String roboto = 'Roboto';
 
   /// Font family: Text
   static const String text = 'Text';

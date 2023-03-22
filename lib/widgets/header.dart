@@ -82,9 +82,8 @@ class Header extends StatelessWidget {
                 child: Text(
                   '27-05-2023',
                   style: TextStyle(
-                    fontFamily: FontFamily.number,
-                    fontSize: 40,
-                    height: 1,
+                    fontFamily: FontFamily.roboto,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primaryText,
                   ),

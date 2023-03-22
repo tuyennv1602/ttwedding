@@ -28,6 +28,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
     _controller = AnimationController(vsync: this)
       ..addListener(() {
         if (_controller.isCompleted) {
+          _slideDone.value = false;
           widget.onDone();
         }
       });
@@ -43,9 +44,14 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final slideWidth = context.isSmallScreen ? widget.width - 60 : widget.width * 0.7;
     return Scaffold(
-      backgroundColor: AppColors.mainBackground.withOpacity(0.1),
       body: Stack(
         children: [
+          Positioned.fill(
+            child: Assets.images.background1.image(
+              fit: BoxFit.cover,
+              alignment: Alignment.centerRight,
+            ),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -151,7 +157,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                 );
               },
             ),
-          )
+          ),
         ],
       ),
     );

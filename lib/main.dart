@@ -32,29 +32,9 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<LandingPageState> _landingKey = GlobalKey();
-  late final AnimationController _controller = AnimationController(
-    duration: const Duration(milliseconds: 500),
-    vsync: this,
-  );
-  late final Animation<Offset> _offsetAnimation = Tween<Offset>(
-    begin: Offset.zero,
-    end: const Offset(-1, 0),
-  ).animate(CurvedAnimation(
-    parent: _controller,
-    curve: Curves.ease,
-  ));
-
-  @override
-  void initState() {
-    super.initState();
-    _controller.addListener(() {
-      if (_controller.isCompleted) {
-        _landingKey.currentState?.play();
-      }
-    });
-  }
+  final PageController _controller = PageController();
 
   @override
   void dispose() {
@@ -92,34 +72,26 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       )
                     ],
                   ),
-                  child: ClipRRect(
-                    child: SlideTransition(
-                      position: _offsetAnimation,
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Positioned(
-                            top: 0,
-                            bottom: 0,
-                            left: 0,
-                            width: width,
-                            child: IntroPage(
-                              width: width,
-                              onDone: () {
-                                _controller.forward();
-                              },
-                            ),
-                          ),
-                          Positioned(
-                            top: 0,
-                            bottom: 0,
-                            left: width,
-                            width: width,
-                            child: LandingPage(key: _landingKey, width: width),
-                          ),
-                        ],
+                  child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: _controller,
+                    onPageChanged: (index) {
+                      if (index == 1) {
+                        _landingKey.currentState?.play();
+                      }
+                    },
+                    children: [
+                      IntroPage(
+                        width: width,
+                        onDone: () {
+                          _controller.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.ease,
+                          );
+                        },
                       ),
-                    ),
+                      LandingPage(key: _landingKey, width: width)
+                    ],
                   ),
                 );
               },

@@ -13,6 +13,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/background.jpg
   AssetGenImage get background => const AssetGenImage('assets/images/background.jpg');
 
+  /// File path: assets/images/background1.jpg
+  AssetGenImage get background1 => const AssetGenImage('assets/images/background1.jpg');
+
   /// File path: assets/images/bg2.png
   AssetGenImage get bg2 => const AssetGenImage('assets/images/bg2.png');
 
@@ -21,6 +24,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/circle_flower.json
   String get circleFlower => 'assets/images/circle_flower.json';
+
+  /// File path: assets/images/circle_frame.png
+  AssetGenImage get circleFrame => const AssetGenImage('assets/images/circle_frame.png');
 
   /// File path: assets/images/cupid.png
   AssetGenImage get cupid => const AssetGenImage('assets/images/cupid.png');
@@ -43,6 +49,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/girl.png
   AssetGenImage get girl => const AssetGenImage('assets/images/girl.png');
 
+  /// File path: assets/images/hear2.png
+  AssetGenImage get hear2 => const AssetGenImage('assets/images/hear2.png');
+
   /// File path: assets/images/heart.png
   AssetGenImage get heart => const AssetGenImage('assets/images/heart.png');
 
@@ -52,11 +61,20 @@ class $AssetsImagesGen {
   /// File path: assets/images/heart_fly.json
   String get heartFly => 'assets/images/heart_fly.json';
 
-  /// File path: assets/images/img1.jpg
-  AssetGenImage get img1 => const AssetGenImage('assets/images/img1.jpg');
+  /// File path: assets/images/img1.png
+  AssetGenImage get img1 => const AssetGenImage('assets/images/img1.png');
+
+  /// File path: assets/images/img2.jpg
+  AssetGenImage get img2 => const AssetGenImage('assets/images/img2.jpg');
+
+  /// File path: assets/images/img3.jpg
+  AssetGenImage get img3 => const AssetGenImage('assets/images/img3.jpg');
 
   /// File path: assets/images/rose_gold.json
   String get roseGold => 'assets/images/rose_gold.json';
+
+  /// File path: assets/images/wedding.png
+  AssetGenImage get wedding => const AssetGenImage('assets/images/wedding.png');
 }
 
 class Assets {

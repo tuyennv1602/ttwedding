@@ -37,11 +37,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   lottie: ^2.2.0
   action_slider: ^0.6.1
+  url_launcher: ^6.1.10
+  flutter_carousel_slider: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  
 
 flutter_gen:
   output: lib/gen/
@@ -76,9 +79,11 @@ flutter:
       fonts:
         - asset: assets/fonts/wedding.ttf
 
-    - family: Number
+    - family: Roboto
       fonts:
-        - asset: assets/fonts/wedding-2.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
+
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
