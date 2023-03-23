@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_wedding/colors.dart';
+import 'package:my_wedding/extension.dart';
 import 'package:my_wedding/gen/assets.gen.dart';
+import 'package:my_wedding/widgets/banking.dart';
 import 'package:my_wedding/widgets/footer.dart';
 import 'package:my_wedding/widgets/story.dart';
 import 'package:my_wedding/widgets/time.dart';
@@ -41,6 +43,8 @@ class LandingPageState extends State<LandingPage> with TickerProviderStateMixin 
       topRight: Radius.circular(10),
       bottomLeft: Radius.circular(10),
     );
+    final isSmallScreen = context.isSmallScreen;
+
     final fWidth = widget.width / 4;
     return Stack(
       children: [
@@ -75,11 +79,26 @@ class LandingPageState extends State<LandingPage> with TickerProviderStateMixin 
                     const SizedBox(height: 20),
                     const Time(),
                     const SizedBox(height: 30),
-                    Assets.images.divider2.image(height: 30),
-                    const SizedBox(height: 30),
+                    Assets.images.rvsp.image(
+                      height: isSmallScreen ? 60 : 80,
+                      color: AppColors.primaryText.withOpacity(0.5),
+                    ),
+                    const SizedBox(height: 10),
                     const Album(),
+                    const SizedBox(height: 20),
+                    Assets.images.heart3.image(
+                      height: isSmallScreen ? 60 : 80,
+                      color: AppColors.primary.withOpacity(0.5),
+                    ),
+                    const SizedBox(height: 20),
                     const Footer(),
-                    const SizedBox(height: 50)
+                    const SizedBox(height: 20),
+                    Assets.images.leaf.image(
+                      height: isSmallScreen ? 60 : 80,
+                      color: AppColors.primary.withOpacity(0.5),
+                    ),
+                    const SizedBox(height: 20),
+                    const Banking(),
                   ],
                 ),
               ),

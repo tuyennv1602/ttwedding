@@ -12,29 +12,39 @@ class Time extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallScreen = context.isSmallScreen;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            '💌 Với mong muốn được chia sẻ khoảnh khắc hạnh phúc này đến người thân, bạn bè, đồng nghiệp, Tuyển & Thương xin được gửi lời mời trân trọng nhất đến bạn tới dự hôn lễ của Tuyển và Thương.\n\n🕑 Hôn lễ được tổ chức vào',
-            style: TextStyle(
-              fontSize: context.isSmallScreen ? 16 : 20,
-              fontFamily: FontFamily.roboto,
-              height: 1.3,
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Assets.images.ring.image(height: 150, color: AppColors.mainBackground.withOpacity(0.5)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                '💌 Với mong muốn được chia sẻ khoảnh khắc hạnh phúc này đến người thân, bạn bè, đồng nghiệp, Tuyển & Thương xin được gửi lời mời trân trọng nhất đến bạn tới dự hôn lễ của Tuyển và Thương.\n\n🕑 Hôn lễ được tổ chức vào',
+                style: TextStyle(
+                  fontSize: isSmallScreen ? 16 : 20,
+                  fontFamily: FontFamily.roboto,
+                  height: 1.3,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Transform.translate(
+          offset: const Offset(0, 20),
+          child: Align(
+            alignment: Alignment.center,
+            child: SizedBox(
+              width: isSmallScreen ? context.width * 0.5 : 300,
+              child: Lottie.asset(Assets.images.divider, repeat: false),
             ),
           ),
         ),
-        const SizedBox(height: 20),
         Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 1, color: AppColors.backgroundShadow),
-              bottom: BorderSide(width: 1, color: AppColors.backgroundShadow),
-            ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 20),
           margin: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
@@ -45,7 +55,7 @@ class Time extends StatelessWidget {
                     'Thứ bảy',
                     style: TextStyle(
                       fontFamily: FontFamily.roboto,
-                      fontSize: context.isSmallScreen ? 24 : 28,
+                      fontSize: isSmallScreen ? 24 : 28,
                       color: AppColors.primaryText,
                       fontWeight: FontWeight.w600,
                     ),
@@ -60,7 +70,7 @@ class Time extends StatelessWidget {
                     '27-05-2023',
                     style: TextStyle(
                       fontFamily: FontFamily.roboto,
-                      fontSize: context.isSmallScreen ? 24 : 28,
+                      fontSize: isSmallScreen ? 24 : 28,
                       color: AppColors.primaryText,
                       fontWeight: FontWeight.w600,
                     ),
@@ -71,7 +81,7 @@ class Time extends StatelessWidget {
               Text(
                 '(Tức ngày 09-04 năm Quý Mão)',
                 style: TextStyle(
-                  fontSize: context.isSmallScreen ? 14 : 18,
+                  fontSize: isSmallScreen ? 14 : 18,
                   fontFamily: FontFamily.roboto,
                   height: 1.3,
                   fontStyle: FontStyle.italic,
@@ -80,13 +90,25 @@ class Time extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 30),
+        Transform.translate(
+          offset: const Offset(0, -20),
+          child: RotatedBox(
+            quarterTurns: 90,
+            child: Align(
+              alignment: Alignment.center,
+              child: SizedBox(
+                width: isSmallScreen ? context.width * 0.5 : 300,
+                child: Lottie.asset(Assets.images.divider, repeat: false),
+              ),
+            ),
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             '🏠 Tại gia đình',
             style: TextStyle(
-              fontSize: context.isSmallScreen ? 16 : 20,
+              fontSize: isSmallScreen ? 16 : 20,
               fontFamily: FontFamily.roboto,
               height: 1.3,
             ),
@@ -123,7 +145,7 @@ class Time extends StatelessWidget {
                               text: 'Nhà trai\n\n',
                               children: [
                                 TextSpan(
-                                  text: 'Xóm 3, xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text: 'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -134,14 +156,17 @@ class Time extends StatelessWidget {
                             ),
                             style: TextStyle(
                               fontFamily: FontFamily.roboto,
-                              fontSize: context.isSmallScreen ? 16 : 20,
+                              fontSize: isSmallScreen ? 16 : 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           const SizedBox(height: 15),
                           GestureDetector(
                             onTap: () {
-                              launchUrlString('https://goo.gl/maps/NnXgT5facEqAE2nc9');
+                              launchUrlString(
+                                'https://goo.gl/maps/NnXgT5facEqAE2nc9',
+                                mode: LaunchMode.externalApplication,
+                              );
                             },
                             child: const Text(
                               'Xem bản đồ →',
@@ -174,7 +199,7 @@ class Time extends StatelessWidget {
                               text: 'Nhà gái\n\n',
                               children: [
                                 TextSpan(
-                                  text: 'Xóm 15, xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text: 'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -185,14 +210,17 @@ class Time extends StatelessWidget {
                             ),
                             style: TextStyle(
                               fontFamily: FontFamily.roboto,
-                              fontSize: context.isSmallScreen ? 16 : 20,
+                              fontSize: isSmallScreen ? 16 : 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           const SizedBox(height: 15),
                           GestureDetector(
                             onTap: () {
-                              launchUrlString('https://goo.gl/maps/KfbvjPXXcXib7znB6');
+                              launchUrlString(
+                                'https://goo.gl/maps/KfbvjPXXcXib7znB6',
+                                mode: LaunchMode.externalApplication,
+                              );
                             },
                             child: const Text(
                               'Xem bản đồ →',
@@ -217,7 +245,7 @@ class Time extends StatelessWidget {
           child: Text(
             '❤ Sự hiện diện của bạn sẽ là món quà ý nghĩa nhất dành cho Tuyển & Thương...',
             style: TextStyle(
-              fontSize: context.isSmallScreen ? 16 : 20,
+              fontSize: isSmallScreen ? 16 : 20,
               fontFamily: FontFamily.roboto,
               height: 1.3,
             ),

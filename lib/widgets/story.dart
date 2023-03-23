@@ -10,6 +10,8 @@ class Story extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallScreen = context.isSmallScreen;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
@@ -23,7 +25,7 @@ class Story extends StatelessWidget {
                   child: Text(
                     '“Một ngày nào đó, chúng ta sẽ tìm thấy người ấy, người mà giữa hàng trăm triệu người trên thế giới này, sẽ vững vàng tiến đến chỗ chúng ta, nắm lấy tay ta, bình lặng cùng đi qua cuộc đời giông bão này.”',
                     style: TextStyle(
-                      fontSize: context.isSmallScreen ? 16 : 20,
+                      fontSize: isSmallScreen ? 16 : 20,
                       fontFamily: FontFamily.roboto,
                       height: 1.3,
                       fontStyle: FontStyle.italic,
@@ -36,16 +38,26 @@ class Story extends StatelessWidget {
                 angle: 15 / 360,
                 filterQuality: FilterQuality.high,
                 child: Container(
-                  width: context.isSmallScreen ? 150 : 200,
-                  height: context.isSmallScreen ? 180 : 250,
+                  width: isSmallScreen ? 150 : 200,
+                  height: isSmallScreen ? 180 : 250,
                   decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 5,
-                      color: Colors.white,
-                    ),
+                    border: Border.all(width: 5, color: AppColors.mainBackground.withOpacity(0.5)),
                   ),
-                  child: Assets.images.img2.image(
-                    fit: BoxFit.cover,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned.fill(
+                        child: Assets.images.img2.image(fit: BoxFit.cover),
+                      ),
+                      Positioned(
+                        right: -20,
+                        bottom: -20,
+                        child: Assets.images.leaf.image(
+                          width: isSmallScreen ? 40 : 50,
+                          color: AppColors.mainBackground,
+                        ),
+                      )
+                    ],
                   ),
                 ),
               )
@@ -67,7 +79,7 @@ class Story extends StatelessWidget {
                 ],
               ),
               style: TextStyle(
-                fontSize: context.isSmallScreen ? 16 : 20,
+                fontSize: isSmallScreen ? 16 : 20,
                 fontFamily: FontFamily.roboto,
                 height: 1.3,
               ),
@@ -80,7 +92,7 @@ class Story extends StatelessWidget {
                 'Nguyễn Văn Tuyển',
                 style: TextStyle(
                   fontFamily: FontFamily.text,
-                  fontSize: context.isSmallScreen ? 36 : 40,
+                  fontSize: isSmallScreen ? 36 : 46,
                   color: AppColors.primaryText,
                 ),
               ),
@@ -88,13 +100,12 @@ class Story extends StatelessWidget {
           ),
           Center(
             child: SizedBox(
-              height: 60,
-              width: 60,
+              height: 80,
+              width: 80,
               child: Center(
                 child: Lottie.asset(
                   Assets.images.heartFly,
                   fit: BoxFit.cover,
-                  repeat: false,
                 ),
               ),
             ),
@@ -106,7 +117,7 @@ class Story extends StatelessWidget {
                 'Phạm Thị Thương',
                 style: TextStyle(
                   fontFamily: FontFamily.text,
-                  fontSize: context.isSmallScreen ? 36 : 40,
+                  fontSize: isSmallScreen ? 36 : 46,
                   color: AppColors.primaryText,
                 ),
               ),

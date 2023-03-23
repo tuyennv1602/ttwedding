@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'T&T Wedding',
       theme: ThemeData(
         fontFamily: FontFamily.text,
+        primaryColor: AppColors.primary,
       ),
       home: const MyHomePage(),
     );
@@ -45,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Positioned.fill(

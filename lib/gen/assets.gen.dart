@@ -28,9 +28,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/circle_frame.png
   AssetGenImage get circleFrame => const AssetGenImage('assets/images/circle_frame.png');
 
-  /// File path: assets/images/cupid.png
-  AssetGenImage get cupid => const AssetGenImage('assets/images/cupid.png');
-
   /// File path: assets/images/divider.json
   String get divider => 'assets/images/divider.json';
 
@@ -55,6 +52,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/heart.png
   AssetGenImage get heart => const AssetGenImage('assets/images/heart.png');
 
+  /// File path: assets/images/heart3.png
+  AssetGenImage get heart3 => const AssetGenImage('assets/images/heart3.png');
+
   /// File path: assets/images/heart_feedback.json
   String get heartFeedback => 'assets/images/heart_feedback.json';
 
@@ -70,8 +70,20 @@ class $AssetsImagesGen {
   /// File path: assets/images/img3.jpg
   AssetGenImage get img3 => const AssetGenImage('assets/images/img3.jpg');
 
+  /// File path: assets/images/leaf.png
+  AssetGenImage get leaf => const AssetGenImage('assets/images/leaf.png');
+
+  /// File path: assets/images/ring.png
+  AssetGenImage get ring => const AssetGenImage('assets/images/ring.png');
+
   /// File path: assets/images/rose_gold.json
   String get roseGold => 'assets/images/rose_gold.json';
+
+  /// File path: assets/images/rvsp.png
+  AssetGenImage get rvsp => const AssetGenImage('assets/images/rvsp.png');
+
+  /// File path: assets/images/vcb.jpg
+  AssetGenImage get vcb => const AssetGenImage('assets/images/vcb.jpg');
 
   /// File path: assets/images/wedding.png
   AssetGenImage get wedding => const AssetGenImage('assets/images/wedding.png');

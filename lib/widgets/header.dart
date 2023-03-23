@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:my_wedding/colors.dart';
 import 'package:my_wedding/gen/assets.gen.dart';
 import 'package:my_wedding/extension.dart';
@@ -10,7 +9,8 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bigText = context.isSmallScreen ? 64.0 : 80.0;
+    final isSmallScreen = context.isSmallScreen;
+    final bigText = isSmallScreen ? 64.0 : 80.0;
     return SizedBox(
       width: double.infinity,
       child: Stack(
@@ -43,11 +43,10 @@ class Header extends StatelessWidget {
           ),
           Positioned(
             child: Padding(
-              padding: EdgeInsets.only(left: context.isSmallScreen ? 50 : 60, top: 20),
+              padding: EdgeInsets.only(left: isSmallScreen ? 50 : 60, top: 20),
               child: Text(
                 'the',
-                style: TextStyle(
-                    color: AppColors.primaryText, fontSize: context.isSmallScreen ? 35 : 40),
+                style: TextStyle(color: AppColors.primaryText, fontSize: isSmallScreen ? 35 : 40),
               ),
             ),
           ),
@@ -67,9 +66,9 @@ class Header extends StatelessWidget {
             child: Container(
               height: 60,
               width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.7),
-                gradient: const LinearGradient(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                gradient: LinearGradient(
                   colors: [
                     Colors.white,
                     AppColors.mainBackground,

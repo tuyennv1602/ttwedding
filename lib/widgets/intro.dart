@@ -42,7 +42,9 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final slideWidth = context.isSmallScreen ? widget.width - 60 : widget.width * 0.7;
+    final isSmallScreen = context.isSmallScreen;
+
+    final slideWidth = isSmallScreen ? widget.width - 60 : widget.width * 0.7;
     return Scaffold(
       body: Stack(
         children: [
@@ -55,6 +57,14 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                'Happy Wedding',
+                style: TextStyle(
+                  fontSize: isSmallScreen ? 50 : 80,
+                  color: AppColors.primaryText,
+                ),
+              ),
+              const SizedBox(height: 70),
               SizedBox(
                 width: widget.width,
                 child: Stack(
@@ -71,8 +81,8 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                               child: ValueListenableBuilder<double>(
                                 valueListenable: _slidePercent,
                                 builder: (context, percent, _) {
-                                  final double imgWidth = context.isSmallScreen ? 100 : 120;
-                                  final double extra = context.isSmallScreen ? 5 : 6;
+                                  final double imgWidth = isSmallScreen ? 100 : 120;
+                                  final double extra = isSmallScreen ? 5 : 6;
                                   return Transform.translate(
                                     offset: Offset(
                                         ((slideWidth / 2) - (imgWidth - extra)) * percent, 0),
@@ -88,8 +98,8 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                               child: ValueListenableBuilder<double>(
                                 valueListenable: _slidePercent,
                                 builder: (context, percent, _) {
-                                  final double imgWidth = context.isSmallScreen ? 125 : 145;
-                                  final double extra = context.isSmallScreen ? 5 : 6;
+                                  final double imgWidth = isSmallScreen ? 125 : 145;
+                                  final double extra = isSmallScreen ? 5 : 6;
 
                                   return Transform.translate(
                                     offset: Offset(
@@ -135,7 +145,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                   'Vuốt để mở thiệp nhé ^^',
                   style: TextStyle(
                     color: AppColors.backgroundShadow,
-                    fontSize: context.isSmallScreen ? 28 : 32,
+                    fontSize: isSmallScreen ? 28 : 32,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

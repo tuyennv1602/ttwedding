@@ -13,8 +13,10 @@ class TheName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallScreen = context.isSmallScreen;
+
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: context.isSmallScreen ? 20 : 80),
+      padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 20 : 80),
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -23,14 +25,12 @@ class TheName extends StatelessWidget {
             fit: BoxFit.contain,
             controller: controller,
           ),
-          Positioned(
-            child: Text(
-              'T❦T',
-              style: TextStyle(
-                fontSize: context.isSmallScreen ? 50 : 60,
-                color: AppColors.primaryText,
-                fontWeight: FontWeight.w500,
-              ),
+          Text(
+            'T❦T ',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 50 : 60,
+              color: AppColors.primaryText,
+              fontWeight: FontWeight.w500,
             ),
           )
         ],

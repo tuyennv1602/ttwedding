@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
+import 'package:my_wedding/colors.dart';
 import 'package:my_wedding/extension.dart';
 import 'package:my_wedding/gen/fonts.gen.dart';
 
@@ -8,6 +10,7 @@ class Album extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallScreen = context.isSmallScreen;
     const List<String> images = [
       'https://znews-photo.zingcdn.me/w660/Uploaded/qfssu/2022_10_16/312010655_10228605456097461_7980653090286460139_n.jpg',
       'https://phunuvietnam.mediacdn.vn/179072216278405120/2023/1/7/3230529447341916211575271568471375277054775n-1673059263629352442406.jpg',
@@ -16,30 +19,33 @@ class Album extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            '📷 Cùng xem bộ ảnh cưới nhé',
-            style: TextStyle(
-              fontSize: context.isSmallScreen ? 16 : 20,
-              fontFamily: FontFamily.roboto,
-              height: 1.3,
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              'Album hình cưới',
+              style: TextStyle(
+                fontSize: isSmallScreen ? 24 : 32,
+                height: 1.3,
+                color: AppColors.primaryText,
+                fontWeight: FontWeight.w500,
+                fontFamily: FontFamily.roboto,
+              ),
             ),
           ),
         ),
         const SizedBox(height: 10),
         SizedBox(
-          height: context.isSmallScreen ? 250 : 350,
+          height: isSmallScreen ? 250 : 400,
           child: CarouselSlider.builder(
             unlimitedMode: true,
             enableAutoSlider: true,
             autoSliderDelay: const Duration(seconds: 3),
-            viewportFraction: 0.9,
             slideBuilder: (index) {
               return Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5),
-                child: Image.network(
-                  images[index],
+                child: CachedNetworkImage(
+                  imageUrl: images[index],
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter,
                 ),
@@ -47,6 +53,22 @@ class Album extends StatelessWidget {
             },
             slideTransform: const ParallaxTransform(),
             itemCount: images.length,
+          ),
+        ),
+        Center(
+          child: InkWell(
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.backgroundShadow,
+                borderRadius: BorderRadius.circular(6),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              child: const Text(
+                'Xem album',
+                style: TextStyle(fontFamily: FontFamily.roboto, color: Colors.white),
+              ),
+            ),
           ),
         ),
       ],
