@@ -66,6 +66,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/heart_fly.json
   String get heartFly => 'assets/images/heart_fly.json';
 
+  /// File path: assets/images/icon.png
+  AssetGenImage get icon => const AssetGenImage('assets/images/icon.png');
+
   /// File path: assets/images/img1.png
   AssetGenImage get img1 => const AssetGenImage('assets/images/img1.png');
 
@@ -89,9 +92,6 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/vcb.jpg
   AssetGenImage get vcb => const AssetGenImage('assets/images/vcb.jpg');
-
-  /// File path: assets/images/wedding.png
-  AssetGenImage get wedding => const AssetGenImage('assets/images/wedding.png');
 }
 
 class Assets {
