@@ -11,7 +11,14 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSmallScreen = context.isSmallScreen;
     return Container(
-      color: AppColors.mainBackground.withOpacity(0.5),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.mainBackground.withOpacity(0.2),
+            blurRadius: 10,
+          )
+        ],
+      ),
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
@@ -19,13 +26,14 @@ class Footer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Center(
               child: Text(
-                'Sẽ thật tuyệt vời nếu bạn tới dự lễ thành hôn của Tuyển và Thương',
+                'Sẽ thật tuyệt vời nếu bạn có thể xác nhận tới dự lễ thành hôn của Tuyển & Thương, để Tuyển & Thương cùng gia đình có thể tiếp đón chu đáo nhất.',
                 style: TextStyle(
-                  fontSize: isSmallScreen ? 16 : 20,
+                  fontSize: isSmallScreen ? 15 : 18,
                   fontFamily: FontFamily.roboto,
                   height: 1.3,
+                  fontStyle: FontStyle.italic,
                 ),
-                textAlign: TextAlign.center,
+                // textAlign: TextAlign.center,
               ),
             ),
           ),

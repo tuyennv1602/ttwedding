@@ -37,7 +37,8 @@ class Header extends StatelessWidget {
               padding: EdgeInsets.only(bottom: bigText),
               child: Text(
                 'Save',
-                style: TextStyle(color: AppColors.primaryText, fontSize: bigText),
+                style:
+                    TextStyle(color: AppColors.primaryText, fontSize: bigText),
               ),
             ),
           ),
@@ -46,7 +47,9 @@ class Header extends StatelessWidget {
               padding: EdgeInsets.only(left: isSmallScreen ? 50 : 60, top: 20),
               child: Text(
                 'the',
-                style: TextStyle(color: AppColors.primaryText, fontSize: isSmallScreen ? 35 : 40),
+                style: TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: isSmallScreen ? 35 : 40),
               ),
             ),
           ),
@@ -55,48 +58,37 @@ class Header extends StatelessWidget {
               padding: EdgeInsets.only(top: bigText),
               child: Text(
                 'Date',
-                style: TextStyle(color: AppColors.primaryText, fontSize: bigText),
+                style:
+                    TextStyle(color: AppColors.primaryText, fontSize: bigText),
               ),
             ),
           ),
           Positioned(
-            bottom: -30,
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: bigText * 2,
+                left: isSmallScreen ? 50 : 60,
+              ),
+              child: Text(
+                '27-05-2023',
+                style: TextStyle(
+                  color: AppColors.primaryText,
+                  fontSize: isSmallScreen ? 14 : 18,
+                  fontFamily: FontFamily.roboto,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -13,
             left: 0,
             right: 0,
-            child: Container(
-              height: 60,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white,
-                    AppColors.mainBackground,
-                    Colors.white,
-                  ],
-                ),
-              ),
-              padding: const EdgeInsets.only(bottom: 10),
-              child: const Center(
-                child: Text(
-                  '27-05-2023',
-                  style: TextStyle(
-                    fontFamily: FontFamily.roboto,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.primaryText,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: -25,
             child: Assets.images.divider3.image(
-              height: 25,
-              width: 200,
-              fit: BoxFit.fill,
-              color: AppColors.primaryText,
+              height: 26,
+              width: double.infinity,
+              fit: BoxFit.fitWidth,
+              color: AppColors.primary.withOpacity(0.5),
             ),
           )
         ],

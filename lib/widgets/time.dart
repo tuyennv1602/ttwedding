@@ -8,7 +8,11 @@ import 'package:url_launcher/url_launcher_string.dart';
 import '../gen/fonts.gen.dart';
 
 class Time extends StatelessWidget {
-  const Time({Key? key}) : super(key: key);
+  final double width;
+  const Time({
+    Key? key,
+    required this.width,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +24,12 @@ class Time extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: [
-            Assets.images.ring.image(height: 150, color: AppColors.mainBackground.withOpacity(0.5)),
+            Assets.images.ring.image(
+                height: 150, color: AppColors.mainBackground.withOpacity(0.5)),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                '💌 Với mong muốn được chia sẻ khoảnh khắc hạnh phúc này đến người thân, bạn bè, đồng nghiệp, Tuyển & Thương xin được gửi lời mời trân trọng nhất đến bạn tới dự hôn lễ của Tuyển và Thương.\n\n🕑 Hôn lễ được tổ chức vào',
+                '💌 Với mong muốn được chia sẻ khoảnh khắc hạnh phúc này đến người thân, bạn bè, đồng nghiệp, Tuyển & Thương xin được gửi lời mời trân trọng nhất đến bạn tới dự hôn lễ của Tuyển & Thương.\n\n🕑 Hôn lễ được tổ chức vào',
                 style: TextStyle(
                   fontSize: isSmallScreen ? 16 : 20,
                   fontFamily: FontFamily.roboto,
@@ -39,7 +44,7 @@ class Time extends StatelessWidget {
           child: Align(
             alignment: Alignment.center,
             child: SizedBox(
-              width: isSmallScreen ? context.width * 0.5 : 300,
+              width: width * 0.5,
               child: Lottie.asset(Assets.images.divider, repeat: false),
             ),
           ),
@@ -97,7 +102,7 @@ class Time extends StatelessWidget {
             child: Align(
               alignment: Alignment.center,
               child: SizedBox(
-                width: isSmallScreen ? context.width * 0.5 : 300,
+                width: width * 0.5,
                 child: Lottie.asset(Assets.images.divider, repeat: false),
               ),
             ),
@@ -106,7 +111,7 @@ class Time extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            '🏠 Tại gia đình',
+            '🏠 Tại Tư gia',
             style: TextStyle(
               fontSize: isSmallScreen ? 16 : 20,
               fontFamily: FontFamily.roboto,
@@ -119,7 +124,7 @@ class Time extends StatelessWidget {
           child: Stack(
             children: [
               Center(
-                child: Assets.images.hear2.image(
+                child: Assets.images.heart2.image(
                   height: 180,
                   color: AppColors.mainBackground.withOpacity(0.5),
                   fit: BoxFit.contain,
@@ -145,7 +150,8 @@ class Time extends StatelessWidget {
                               text: 'Nhà trai\n\n',
                               children: [
                                 TextSpan(
-                                  text: 'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text:
+                                      'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -199,7 +205,8 @@ class Time extends StatelessWidget {
                               text: 'Nhà gái\n\n',
                               children: [
                                 TextSpan(
-                                  text: 'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text:
+                                      'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -243,7 +250,7 @@ class Time extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            '❤ Sự hiện diện của bạn sẽ là món quà ý nghĩa nhất dành cho Tuyển & Thương...',
+            '❤ Sự hiện diện của bạn cùng gia đình/người thương sẽ là món quà ý nghĩa nhất dành cho Tuyển & Thương ❤',
             style: TextStyle(
               fontSize: isSmallScreen ? 16 : 20,
               fontFamily: FontFamily.roboto,

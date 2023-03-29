@@ -22,7 +22,8 @@ class LandingPage extends StatefulWidget {
   State<LandingPage> createState() => LandingPageState();
 }
 
-class LandingPageState extends State<LandingPage> with TickerProviderStateMixin {
+class LandingPageState extends State<LandingPage>
+    with TickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
@@ -32,9 +33,10 @@ class LandingPageState extends State<LandingPage> with TickerProviderStateMixin 
   }
 
   void play() {
-    _controller
-      ..duration = const Duration(seconds: 2)
-      ..forward();
+    Future.delayed(const Duration(milliseconds: 500))
+        .then((value) => _controller
+          ..duration = const Duration(seconds: 2)
+          ..forward());
   }
 
   @override
@@ -73,15 +75,18 @@ class LandingPageState extends State<LandingPage> with TickerProviderStateMixin 
                   children: [
                     const Header(),
                     TheName(controller: _controller),
-                    Assets.images.divider2.image(height: 30),
+                    Assets.images.divider2.image(
+                      height: 30,
+                      color: AppColors.primary.withOpacity(0.5),
+                    ),
                     const SizedBox(height: 40),
                     const Story(),
                     const SizedBox(height: 20),
-                    const Time(),
+                    Time(width: widget.width),
                     const SizedBox(height: 30),
                     Assets.images.rvsp.image(
                       height: isSmallScreen ? 60 : 80,
-                      color: AppColors.primaryText.withOpacity(0.5),
+                      color: AppColors.primary.withOpacity(0.5),
                     ),
                     const SizedBox(height: 10),
                     const Album(),
@@ -98,7 +103,7 @@ class LandingPageState extends State<LandingPage> with TickerProviderStateMixin 
                       color: AppColors.primary.withOpacity(0.5),
                     ),
                     const SizedBox(height: 20),
-                    const Banking(),
+                    Banking(width: widget.width),
                   ],
                 ),
               ),
