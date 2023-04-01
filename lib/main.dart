@@ -24,8 +24,10 @@ class MyApp extends StatelessWidget {
         fontFamily: FontFamily.text,
         primaryColor: AppColors.primary,
       ),
-      initialRoute: '/',
-      routes: <String, WidgetBuilder>{'/': (context) => const MyHomePage()},
+      initialRoute: '/home',
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(builder: (context) => const MyHomePage());
+      },
     );
   }
 }
