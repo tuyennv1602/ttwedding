@@ -35,6 +35,18 @@ class Album extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            'Cùng xem lại những bức hình đẹp nhất của Tuyển & Thương nhé.',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 16 : 20,
+              height: 1.3,
+              fontFamily: FontFamily.roboto,
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
         SizedBox(
           height: isSmallScreen ? 250 : 400,
           child: CarouselSlider.builder(
@@ -65,7 +77,7 @@ class Album extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: const Text(
-                'Xem album',
+                'Xem đầy đủ album',
                 style: TextStyle(fontFamily: FontFamily.roboto, color: Colors.white),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:action_slider/action_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:my_wedding/colors.dart';
@@ -22,6 +23,8 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   final ValueNotifier<double> _slidePercent = ValueNotifier(0);
   late final AnimationController _controller;
   final ValueNotifier<bool> _slideDone = ValueNotifier(false);
+  bool _isLoading = true;
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +38,19 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    Future.wait([
+      precacheImage(AssetImage(Assets.images.girl.path), context),
+      precacheImage(AssetImage(Assets.images.boy.path), context)
+    ]).then((value) {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -43,7 +59,6 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final isSmallScreen = context.isSmallScreen;
-
     final slideWidth = isSmallScreen ? widget.width - 60 : widget.width * 0.7;
     return Scaffold(
       body: Stack(
@@ -57,14 +72,8 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Happy Wedding',
-                style: TextStyle(
-                  fontSize: isSmallScreen ? 50 : 80,
-                  color: AppColors.primaryText,
-                ),
-              ),
-              const SizedBox(height: 70),
+              Assets.images.happyWedding.image(width: slideWidth * 0.6),
+              const SizedBox(height: 100),
               SizedBox(
                 width: widget.width,
                 child: Stack(
@@ -86,7 +95,10 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                   return Transform.translate(
                                     offset: Offset(
                                         ((slideWidth / 2) - (imgWidth - extra)) * percent, 0),
-                                    child: Assets.images.boy.image(width: imgWidth),
+                                    child: Image.asset(
+                                      Assets.images.boy.path,
+                                      width: imgWidth,
+                                    ),
                                   );
                                 },
                               ),
@@ -100,11 +112,13 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 builder: (context, percent, _) {
                                   final double imgWidth = isSmallScreen ? 125 : 145;
                                   final double extra = isSmallScreen ? 5 : 6;
-
                                   return Transform.translate(
                                     offset: Offset(
                                         -(((slideWidth / 2) - (imgWidth - extra)) * percent), 0),
-                                    child: Assets.images.girl.image(width: imgWidth),
+                                    child: Image.asset(
+                                      Assets.images.girl.path,
+                                      width: imgWidth,
+                                    ),
                                   );
                                 },
                               ),
@@ -142,7 +156,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                   _slidePercent.value = state.position;
                 },
                 child: Text(
-                  'Vuốt để mở thiệp nhé ^^',
+                  'Vuốt để mở thiệp nhé!',
                   style: TextStyle(
                     color: AppColors.backgroundShadow,
                     fontSize: isSmallScreen ? 28 : 32,
@@ -168,6 +182,18 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
               },
             ),
           ),
+          if (_isLoading)
+            Positioned.fill(
+              child: Container(
+                color: Colors.white,
+                child: Center(
+                  child: CupertinoActivityIndicator(
+                    color: AppColors.primary,
+                    radius: context.isSmallScreen ? 10 : 20,
+                  ),
+                ),
+              ),
+            )
         ],
       ),
     );

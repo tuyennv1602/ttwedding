@@ -26,11 +26,11 @@ class TheName extends StatelessWidget {
             controller: controller,
           ),
           Text(
-            'T❦T ',
+            'TT ',
             style: TextStyle(
-              fontSize: isSmallScreen ? 50 : 60,
+              fontSize: isSmallScreen ? 50 : 80,
               color: AppColors.primaryText,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w700,
             ),
           )
         ],

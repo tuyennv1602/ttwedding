@@ -3,10 +3,13 @@ import 'package:my_wedding/gen/assets.gen.dart';
 import 'package:my_wedding/gen/fonts.gen.dart';
 import 'package:my_wedding/widgets/intro.dart';
 import 'package:my_wedding/widgets/landing.dart';
+import 'package:preload_page_view/preload_page_view.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'colors.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -21,7 +24,8 @@ class MyApp extends StatelessWidget {
         fontFamily: FontFamily.text,
         primaryColor: AppColors.primary,
       ),
-      home: const MyHomePage(),
+      initialRoute: '/',
+      routes: <String, WidgetBuilder>{'/': (context) => const MyHomePage()},
     );
   }
 }
@@ -35,7 +39,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<LandingPageState> _landingKey = GlobalKey();
-  final PageController _controller = PageController();
+  final PreloadPageController _controller = PreloadPageController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -74,9 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       )
                     ],
                   ),
-                  child: PageView(
+                  child: PreloadPageView(
                     physics: const NeverScrollableScrollPhysics(),
                     controller: _controller,
+                    preloadPagesCount: 2,
                     onPageChanged: (index) {
                       if (index == 1) {
                         _landingKey.currentState?.play();
@@ -88,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         onDone: () {
                           _controller.nextPage(
                             duration: const Duration(milliseconds: 500),
-                            curve: Curves.ease,
+                            curve: Curves.linear,
                           );
                         },
                       ),

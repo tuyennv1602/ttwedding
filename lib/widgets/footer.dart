@@ -5,7 +5,11 @@ import 'package:my_wedding/gen/assets.gen.dart';
 import 'package:my_wedding/gen/fonts.gen.dart';
 
 class Footer extends StatelessWidget {
-  const Footer({Key? key}) : super(key: key);
+  final String name;
+  const Footer({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,7 @@ class Footer extends StatelessWidget {
           )
         ],
       ),
+      margin: const EdgeInsets.only(bottom: 50),
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
@@ -26,7 +31,7 @@ class Footer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Center(
               child: Text(
-                'Sẽ thật tuyệt vời nếu bạn có thể xác nhận tới dự lễ thành hôn của Tuyển & Thương, để Tuyển & Thương cùng gia đình có thể tiếp đón chu đáo nhất.',
+                'Sẽ thật tuyệt vời nếu $name có thể xác nhận tới tham dự lễ thành hôn, để Tuyển & Thương cùng gia đình có thể tiếp đón chu đáo nhất.',
                 style: TextStyle(
                   fontSize: isSmallScreen ? 15 : 18,
                   fontFamily: FontFamily.roboto,
@@ -41,13 +46,16 @@ class Footer extends StatelessWidget {
           Stack(
             alignment: Alignment.center,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Assets.images.img3.image(
-                  width: isSmallScreen ? 160 : 200,
-                  height: isSmallScreen ? 160 : 200,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
+              Padding(
+                padding: const EdgeInsets.only(right: 5),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Assets.images.img3.image(
+                    width: isSmallScreen ? 160 : 200,
+                    height: isSmallScreen ? 160 : 200,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.topCenter,
+                  ),
                 ),
               ),
               Assets.images.circleFrame.image(

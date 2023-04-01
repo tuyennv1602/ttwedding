@@ -6,6 +6,7 @@ import 'package:my_wedding/widgets/banking.dart';
 import 'package:my_wedding/widgets/footer.dart';
 import 'package:my_wedding/widgets/story.dart';
 import 'package:my_wedding/widgets/time.dart';
+import 'package:uni_links/uni_links.dart';
 
 import 'album.dart';
 import 'header.dart';
@@ -22,21 +23,37 @@ class LandingPage extends StatefulWidget {
   State<LandingPage> createState() => LandingPageState();
 }
 
-class LandingPageState extends State<LandingPage>
-    with TickerProviderStateMixin {
+class LandingPageState extends State<LandingPage> with TickerProviderStateMixin {
   late final AnimationController _controller;
+  String name = 'Bạn cùng người thương';
 
   @override
   void initState() {
     super.initState();
+    _handleInitialUri();
     _controller = AnimationController(vsync: this);
   }
 
   void play() {
-    Future.delayed(const Duration(milliseconds: 500))
-        .then((value) => _controller
-          ..duration = const Duration(seconds: 2)
-          ..forward());
+    Future.delayed(const Duration(milliseconds: 50)).then((value) => _controller
+      ..duration = const Duration(seconds: 2)
+      ..forward());
+  }
+
+  Future<void> _handleInitialUri() async {
+    try {
+      final uri = await getInitialUri();
+      if (uri != null) {
+        final queries = uri.queryParameters;
+        if (queries.containsKey('name')) {
+          if (mounted && queries['name']!.isNotEmpty) {
+            setState(() {
+              name = queries['name']!;
+            });
+          }
+        }
+      }
+    } catch (_) {}
   }
 
   @override
@@ -82,7 +99,10 @@ class LandingPageState extends State<LandingPage>
                     const SizedBox(height: 40),
                     const Story(),
                     const SizedBox(height: 20),
-                    Time(width: widget.width),
+                    Time(
+                      width: widget.width,
+                      name: name,
+                    ),
                     const SizedBox(height: 30),
                     Assets.images.rvsp.image(
                       height: isSmallScreen ? 60 : 80,
@@ -96,7 +116,7 @@ class LandingPageState extends State<LandingPage>
                       color: AppColors.primary.withOpacity(0.5),
                     ),
                     const SizedBox(height: 20),
-                    const Footer(),
+                    Footer(name: name),
                     const SizedBox(height: 20),
                     Assets.images.leaf.image(
                       height: isSmallScreen ? 60 : 80,

@@ -9,9 +9,11 @@ import '../gen/fonts.gen.dart';
 
 class Time extends StatelessWidget {
   final double width;
+  final String name;
   const Time({
     Key? key,
     required this.width,
+    required this.name,
   }) : super(key: key);
 
   @override
@@ -24,12 +26,11 @@ class Time extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: [
-            Assets.images.ring.image(
-                height: 150, color: AppColors.mainBackground.withOpacity(0.5)),
+            Assets.images.ring.image(height: 150, color: AppColors.mainBackground.withOpacity(0.5)),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                '💌 Với mong muốn được chia sẻ khoảnh khắc hạnh phúc này đến người thân, bạn bè, đồng nghiệp, Tuyển & Thương xin được gửi lời mời trân trọng nhất đến bạn tới dự hôn lễ của Tuyển & Thương.\n\n🕑 Hôn lễ được tổ chức vào',
+                '💌 Với mong muốn được chia sẻ khoảnh khắc hạnh phúc này đến người thân, bạn bè, đồng nghiệp, Tuyển & Thương trân trọng kính mời $name tới dự hôn lễ của Tuyển & Thương.\n\n🕑 Hôn lễ được tổ chức vào',
                 style: TextStyle(
                   fontSize: isSmallScreen ? 16 : 20,
                   fontFamily: FontFamily.roboto,
@@ -150,8 +151,7 @@ class Time extends StatelessWidget {
                               text: 'Nhà trai\n\n',
                               children: [
                                 TextSpan(
-                                  text:
-                                      'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text: 'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -205,8 +205,7 @@ class Time extends StatelessWidget {
                               text: 'Nhà gái\n\n',
                               children: [
                                 TextSpan(
-                                  text:
-                                      'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text: 'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -250,7 +249,7 @@ class Time extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            '❤ Sự hiện diện của bạn cùng gia đình/người thương sẽ là món quà ý nghĩa nhất dành cho Tuyển & Thương ❤',
+            '💝 Sự hiện diện của $name sẽ là món quà ý nghĩa nhất dành cho Tuyển & Thương',
             style: TextStyle(
               fontSize: isSmallScreen ? 16 : 20,
               fontFamily: FontFamily.roboto,

@@ -37,8 +37,7 @@ class Header extends StatelessWidget {
               padding: EdgeInsets.only(bottom: bigText),
               child: Text(
                 'Save',
-                style:
-                    TextStyle(color: AppColors.primaryText, fontSize: bigText),
+                style: TextStyle(color: AppColors.primaryText, fontSize: bigText),
               ),
             ),
           ),
@@ -47,9 +46,7 @@ class Header extends StatelessWidget {
               padding: EdgeInsets.only(left: isSmallScreen ? 50 : 60, top: 20),
               child: Text(
                 'the',
-                style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontSize: isSmallScreen ? 35 : 40),
+                style: TextStyle(color: AppColors.primaryText, fontSize: isSmallScreen ? 35 : 40),
               ),
             ),
           ),
@@ -58,8 +55,7 @@ class Header extends StatelessWidget {
               padding: EdgeInsets.only(top: bigText),
               child: Text(
                 'Date',
-                style:
-                    TextStyle(color: AppColors.primaryText, fontSize: bigText),
+                style: TextStyle(color: AppColors.primaryText, fontSize: bigText),
               ),
             ),
           ),
@@ -81,13 +77,13 @@ class Header extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: -13,
+            bottom: -25,
             left: 0,
             right: 0,
             child: Assets.images.divider3.image(
-              height: 26,
+              height: 50,
               width: double.infinity,
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.fitHeight,
               color: AppColors.primary.withOpacity(0.5),
             ),
           )
