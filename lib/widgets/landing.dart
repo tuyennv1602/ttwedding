@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:my_wedding/colors.dart';
 import 'package:my_wedding/extension.dart';
@@ -6,7 +8,6 @@ import 'package:my_wedding/widgets/banking.dart';
 import 'package:my_wedding/widgets/footer.dart';
 import 'package:my_wedding/widgets/story.dart';
 import 'package:my_wedding/widgets/time.dart';
-import 'package:uni_links/uni_links.dart';
 
 import 'album.dart';
 import 'header.dart';
@@ -42,15 +43,13 @@ class LandingPageState extends State<LandingPage> with TickerProviderStateMixin 
 
   Future<void> _handleInitialUri() async {
     try {
-      final uri = await getInitialUri();
-      if (uri != null) {
-        final queries = uri.queryParameters;
-        if (queries.containsKey('name')) {
-          if (mounted && queries['name']!.isNotEmpty) {
-            setState(() {
-              name = queries['name']!;
-            });
-          }
+      final uri = Uri.decodeFull(html.window.location.href);
+      final queries = Uri.parse(uri).queryParameters;
+      if (queries.containsKey('name')) {
+        if (mounted && queries['name']!.isNotEmpty) {
+          setState(() {
+            name = queries['name']!;
+          });
         }
       }
     } catch (_) {}

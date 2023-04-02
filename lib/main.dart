@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         fontFamily: FontFamily.text,
         primaryColor: AppColors.primary,
       ),
-      initialRoute: '/home',
+      initialRoute: '/',
       onGenerateRoute: (settings) {
         return MaterialPageRoute(builder: (context) => const MyHomePage());
       },
