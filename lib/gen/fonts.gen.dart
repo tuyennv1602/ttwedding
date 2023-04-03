@@ -3,13 +3,15 @@
 ///  FlutterGen
 /// *****************************************************
 
+// coverage:ignore-file
+// ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import
 
 class FontFamily {
   FontFamily._();
 
-  /// Font family: Roboto
-  static const String roboto = 'Roboto';
+  /// Font family: OpenSans
+  static const String openSans = 'OpenSans';
 
   /// Font family: Text
   static const String text = 'Text';

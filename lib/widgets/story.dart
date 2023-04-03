@@ -26,7 +26,7 @@ class Story extends StatelessWidget {
                     '“Một ngày nào đó, chúng ta sẽ tìm thấy người ấy, người mà giữa hàng trăm triệu người trên thế giới này, sẽ vững vàng tiến đến chỗ chúng ta, nắm lấy tay ta, bình lặng cùng đi qua cuộc đời giông bão này.”',
                     style: TextStyle(
                       fontSize: isSmallScreen ? 16 : 20,
-                      fontFamily: FontFamily.roboto,
+                      fontFamily: FontFamily.openSans,
                       height: 1.3,
                       fontStyle: FontStyle.italic,
                     ),
@@ -41,7 +41,9 @@ class Story extends StatelessWidget {
                   width: isSmallScreen ? 150 : 200,
                   height: isSmallScreen ? 180 : 250,
                   decoration: BoxDecoration(
-                    border: Border.all(width: 5, color: AppColors.mainBackground.withOpacity(0.5)),
+                    border: Border.all(
+                        width: 5,
+                        color: AppColors.mainBackground.withOpacity(0.5)),
                   ),
                   child: Stack(
                     clipBehavior: Clip.none,
@@ -68,7 +70,8 @@ class Story extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Text.rich(
               const TextSpan(
-                text: 'Ngày hạnh phúc ấy được đánh dấu bằng buổi tiệc mang tên ',
+                text:
+                    'Ngày hạnh phúc ấy được đánh dấu bằng buổi tiệc mang tên ',
                 children: [
                   TextSpan(
                     text: 'Lễ Thành Hôn',
@@ -80,7 +83,7 @@ class Story extends StatelessWidget {
               ),
               style: TextStyle(
                 fontSize: isSmallScreen ? 16 : 20,
-                fontFamily: FontFamily.roboto,
+                fontFamily: FontFamily.openSans,
                 height: 1.3,
               ),
             ),

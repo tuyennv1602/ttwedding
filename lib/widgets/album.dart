@@ -29,7 +29,7 @@ class Album extends StatelessWidget {
                 height: 1.3,
                 color: AppColors.primaryText,
                 fontWeight: FontWeight.w500,
-                fontFamily: FontFamily.roboto,
+                fontFamily: FontFamily.openSans,
               ),
             ),
           ),
@@ -42,7 +42,7 @@ class Album extends StatelessWidget {
             style: TextStyle(
               fontSize: isSmallScreen ? 16 : 20,
               height: 1.3,
-              fontFamily: FontFamily.roboto,
+              fontFamily: FontFamily.openSans,
             ),
           ),
         ),
@@ -78,7 +78,8 @@ class Album extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: const Text(
                 'Xem đầy đủ album',
-                style: TextStyle(fontFamily: FontFamily.roboto, color: Colors.white),
+                style: TextStyle(
+                    fontFamily: FontFamily.openSans, color: Colors.white),
               ),
             ),
           ),

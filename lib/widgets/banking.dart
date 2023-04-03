@@ -21,7 +21,7 @@ class Banking extends StatelessWidget {
           Text(
             'Mừng cưới cô dâu và chú rể',
             style: TextStyle(
-              fontFamily: FontFamily.roboto,
+              fontFamily: FontFamily.openSans,
               color: AppColors.secondText,
               fontSize: isSmallScreen ? 16 : 20,
             ),
@@ -45,7 +45,7 @@ class Banking extends StatelessWidget {
                       child: Text(
                         'NGUYEN VAN TUYEN\nVCB: 9374841404',
                         style: TextStyle(
-                          fontFamily: FontFamily.roboto,
+                          fontFamily: FontFamily.openSans,
                           fontSize: isSmallScreen ? 15 : 20,
                           height: 1.3,
                         ),
@@ -66,7 +66,7 @@ class Banking extends StatelessWidget {
                       child: Text(
                         'PHAM THI THUONG\nACB: 225088888',
                         style: TextStyle(
-                          fontFamily: FontFamily.roboto,
+                          fontFamily: FontFamily.openSans,
                           fontSize: isSmallScreen ? 15 : 20,
                           height: 1.3,
                         ),

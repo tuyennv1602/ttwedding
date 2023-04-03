@@ -24,7 +24,8 @@ class LandingPage extends StatefulWidget {
   State<LandingPage> createState() => LandingPageState();
 }
 
-class LandingPageState extends State<LandingPage> with TickerProviderStateMixin {
+class LandingPageState extends State<LandingPage>
+    with TickerProviderStateMixin {
   late final AnimationController _controller;
   String name = 'Bạn cùng người thương';
 
@@ -89,7 +90,7 @@ class LandingPageState extends State<LandingPage> with TickerProviderStateMixin 
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
-                    const Header(),
+                    Header(width: widget.width),
                     TheName(controller: _controller),
                     Assets.images.divider2.image(
                       height: 30,

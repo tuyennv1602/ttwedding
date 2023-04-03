@@ -71,8 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
             alignment: Alignment.center,
             child: LayoutBuilder(
               builder: (context, constraints) {
-                final width =
-                    constraints.maxWidth > 600 ? 600.0 : MediaQuery.of(context).size.width;
+                final width = constraints.maxWidth > 600
+                    ? 600.0
+                    : MediaQuery.of(context).size.width;
                 return Container(
                   width: width,
                   height: double.infinity,

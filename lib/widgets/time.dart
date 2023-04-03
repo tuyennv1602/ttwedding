@@ -19,6 +19,12 @@ class Time extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isSmallScreen = context.isSmallScreen;
+    final dateStyle = TextStyle(
+      fontSize: isSmallScreen ? 22 : 36,
+      fontFamily: FontFamily.openSans,
+      color: AppColors.primaryText,
+      fontWeight: FontWeight.w500,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,86 +32,78 @@ class Time extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: [
-            Assets.images.ring.image(height: 150, color: AppColors.mainBackground.withOpacity(0.5)),
+            Assets.images.ring.image(
+                height: 150, color: AppColors.mainBackground.withOpacity(0.5)),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                '💌 Với mong muốn được chia sẻ khoảnh khắc hạnh phúc này đến người thân, bạn bè, đồng nghiệp, Tuyển & Thương trân trọng kính mời $name tới dự hôn lễ của Tuyển & Thương.\n\n🕑 Hôn lễ được tổ chức vào',
+                '💌 Với mong muốn được chia sẻ khoảnh khắc hạnh phúc này đến người thân, bạn bè, đồng nghiệp, Tuyển & Thương trân trọng kính mời $name tới dự hôn lễ của Tuyển & Thương.\n\n🕑 Hôn lễ được tổ chức vào\n',
                 style: TextStyle(
                   fontSize: isSmallScreen ? 16 : 20,
-                  fontFamily: FontFamily.roboto,
+                  fontFamily: FontFamily.openSans,
                   height: 1.3,
                 ),
               ),
             ),
           ],
         ),
-        Transform.translate(
-          offset: const Offset(0, 20),
-          child: Align(
-            alignment: Alignment.center,
-            child: SizedBox(
-              width: width * 0.5,
-              child: Lottie.asset(Assets.images.divider, repeat: false),
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Thứ bảy',
-                    style: TextStyle(
-                      fontFamily: FontFamily.roboto,
-                      fontSize: isSmallScreen ? 24 : 28,
-                      color: AppColors.primaryText,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Container(
-                    color: AppColors.primaryText,
-                    width: 1,
-                    height: 20,
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
-                  ),
-                  Text(
-                    '27-05-2023',
-                    style: TextStyle(
-                      fontFamily: FontFamily.roboto,
-                      fontSize: isSmallScreen ? 24 : 28,
-                      color: AppColors.primaryText,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 5),
-              Text(
-                '(Tức ngày 09-04 năm Quý Mão)',
-                style: TextStyle(
-                  fontSize: isSmallScreen ? 14 : 18,
-                  fontFamily: FontFamily.roboto,
-                  height: 1.3,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Transform.translate(
-          offset: const Offset(0, -20),
-          child: RotatedBox(
-            quarterTurns: 90,
-            child: Align(
+        Align(
+          child: SizedBox(
+            width: width * 0.7,
+            child: Stack(
               alignment: Alignment.center,
-              child: SizedBox(
-                width: width * 0.5,
-                child: Lottie.asset(Assets.images.divider, repeat: false),
-              ),
+              children: [
+                Assets.images.dateFrame.image(),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Thứ 7',
+                          style: dateStyle,
+                        ),
+                        Container(
+                          height: 20,
+                          color: AppColors.primaryText,
+                          width: 1,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                        Text(
+                          '27\n05',
+                          style: TextStyle(
+                            fontSize: isSmallScreen ? 28 : 46,
+                            fontFamily: FontFamily.openSans,
+                            color: AppColors.primaryText,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                          height: 20,
+                          color: AppColors.primaryText,
+                          width: 1,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                        Text(
+                          ' 2023',
+                          style: dateStyle,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '(Tức ngày 09-04 năm Quý Mão)',
+                      style: TextStyle(
+                        fontSize: isSmallScreen ? 14 : 18,
+                        fontFamily: FontFamily.openSans,
+                        height: 1.3,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    SizedBox(height: isSmallScreen ? 90 : 130),
+                  ],
+                )
+              ],
             ),
           ),
         ),
@@ -115,7 +113,7 @@ class Time extends StatelessWidget {
             '🏠 Tại Tư gia',
             style: TextStyle(
               fontSize: isSmallScreen ? 16 : 20,
-              fontFamily: FontFamily.roboto,
+              fontFamily: FontFamily.openSans,
               height: 1.3,
             ),
           ),
@@ -151,7 +149,8 @@ class Time extends StatelessWidget {
                               text: 'Nhà trai\n\n',
                               children: [
                                 TextSpan(
-                                  text: 'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text:
+                                      'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -161,7 +160,7 @@ class Time extends StatelessWidget {
                               ],
                             ),
                             style: TextStyle(
-                              fontFamily: FontFamily.roboto,
+                              fontFamily: FontFamily.openSans,
                               fontSize: isSmallScreen ? 16 : 20,
                               fontWeight: FontWeight.bold,
                             ),
@@ -177,7 +176,7 @@ class Time extends StatelessWidget {
                             child: const Text(
                               'Xem bản đồ →',
                               style: TextStyle(
-                                fontFamily: FontFamily.roboto,
+                                fontFamily: FontFamily.openSans,
                                 fontStyle: FontStyle.italic,
                                 decoration: TextDecoration.underline,
                               ),
@@ -205,7 +204,8 @@ class Time extends StatelessWidget {
                               text: 'Nhà gái\n\n',
                               children: [
                                 TextSpan(
-                                  text: 'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text:
+                                      'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -215,7 +215,7 @@ class Time extends StatelessWidget {
                               ],
                             ),
                             style: TextStyle(
-                              fontFamily: FontFamily.roboto,
+                              fontFamily: FontFamily.openSans,
                               fontSize: isSmallScreen ? 16 : 20,
                               fontWeight: FontWeight.bold,
                             ),
@@ -231,7 +231,7 @@ class Time extends StatelessWidget {
                             child: const Text(
                               'Xem bản đồ →',
                               style: TextStyle(
-                                fontFamily: FontFamily.roboto,
+                                fontFamily: FontFamily.openSans,
                                 fontStyle: FontStyle.italic,
                                 decoration: TextDecoration.underline,
                               ),
@@ -252,7 +252,7 @@ class Time extends StatelessWidget {
             '💝 Sự hiện diện của $name sẽ là món quà ý nghĩa nhất dành cho Tuyển & Thương',
             style: TextStyle(
               fontSize: isSmallScreen ? 16 : 20,
-              fontFamily: FontFamily.roboto,
+              fontFamily: FontFamily.openSans,
               height: 1.3,
             ),
           ),

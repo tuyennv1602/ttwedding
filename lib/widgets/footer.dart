@@ -34,7 +34,7 @@ class Footer extends StatelessWidget {
                 'Sẽ thật tuyệt vời nếu $name có thể xác nhận tới tham dự lễ thành hôn, để Tuyển & Thương cùng gia đình có thể tiếp đón chu đáo nhất.',
                 style: TextStyle(
                   fontSize: isSmallScreen ? 15 : 18,
-                  fontFamily: FontFamily.roboto,
+                  fontFamily: FontFamily.openSans,
                   height: 1.3,
                   fontStyle: FontStyle.italic,
                 ),

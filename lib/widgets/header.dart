@@ -5,7 +5,12 @@ import 'package:my_wedding/extension.dart';
 import 'package:my_wedding/gen/fonts.gen.dart';
 
 class Header extends StatelessWidget {
-  const Header({Key? key}) : super(key: key);
+  final double width;
+
+  const Header({
+    Key? key,
+    required this.width,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +42,8 @@ class Header extends StatelessWidget {
               padding: EdgeInsets.only(bottom: bigText),
               child: Text(
                 'Save',
-                style: TextStyle(color: AppColors.primaryText, fontSize: bigText),
+                style:
+                    TextStyle(color: AppColors.primaryText, fontSize: bigText),
               ),
             ),
           ),
@@ -46,7 +52,9 @@ class Header extends StatelessWidget {
               padding: EdgeInsets.only(left: isSmallScreen ? 50 : 60, top: 20),
               child: Text(
                 'the',
-                style: TextStyle(color: AppColors.primaryText, fontSize: isSmallScreen ? 35 : 40),
+                style: TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: isSmallScreen ? 35 : 40),
               ),
             ),
           ),
@@ -55,7 +63,8 @@ class Header extends StatelessWidget {
               padding: EdgeInsets.only(top: bigText),
               child: Text(
                 'Date',
-                style: TextStyle(color: AppColors.primaryText, fontSize: bigText),
+                style:
+                    TextStyle(color: AppColors.primaryText, fontSize: bigText),
               ),
             ),
           ),
@@ -70,20 +79,20 @@ class Header extends StatelessWidget {
                 style: TextStyle(
                   color: AppColors.primaryText,
                   fontSize: isSmallScreen ? 14 : 18,
-                  fontFamily: FontFamily.roboto,
+                  fontFamily: FontFamily.openSans,
                   fontStyle: FontStyle.italic,
                 ),
               ),
             ),
           ),
           Positioned(
-            bottom: -25,
+            bottom: -((width - 20) * 0.1) / 2,
             left: 0,
             right: 0,
             child: Assets.images.divider3.image(
-              height: 50,
-              width: double.infinity,
-              fit: BoxFit.fitHeight,
+              height: (width - 20) * 0.1,
+              width: width - 20,
+              fit: BoxFit.fill,
               color: AppColors.primary.withOpacity(0.5),
             ),
           )
