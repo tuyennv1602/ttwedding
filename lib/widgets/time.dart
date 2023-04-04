@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:my_wedding/colors.dart';
 import 'package:my_wedding/extension.dart';
 import 'package:my_wedding/gen/assets.gen.dart';
@@ -20,7 +19,7 @@ class Time extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSmallScreen = context.isSmallScreen;
     final dateStyle = TextStyle(
-      fontSize: isSmallScreen ? 22 : 36,
+      fontSize: isSmallScreen ? 22 : 30,
       fontFamily: FontFamily.openSans,
       color: AppColors.primaryText,
       fontWeight: FontWeight.w500,
@@ -32,8 +31,7 @@ class Time extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: [
-            Assets.images.ring.image(
-                height: 150, color: AppColors.mainBackground.withOpacity(0.5)),
+            Assets.images.ring.image(height: 150, color: AppColors.mainBackground.withOpacity(0.5)),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
@@ -49,59 +47,61 @@ class Time extends StatelessWidget {
         ),
         Align(
           child: SizedBox(
-            width: width * 0.7,
+            width: width * (isSmallScreen ? 0.85 : 0.7),
             child: Stack(
               alignment: Alignment.center,
               children: [
                 Assets.images.dateFrame.image(),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Thứ 7',
-                          style: dateStyle,
-                        ),
-                        Container(
-                          height: 20,
-                          color: AppColors.primaryText,
-                          width: 1,
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                        ),
-                        Text(
-                          '27\n05',
-                          style: TextStyle(
-                            fontSize: isSmallScreen ? 28 : 46,
-                            fontFamily: FontFamily.openSans,
-                            color: AppColors.primaryText,
-                            fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Thứ 7',
+                            style: dateStyle,
                           ),
-                        ),
-                        Container(
-                          height: 20,
-                          color: AppColors.primaryText,
-                          width: 1,
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                        ),
-                        Text(
-                          ' 2023',
-                          style: dateStyle,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      '(Tức ngày 09-04 năm Quý Mão)',
-                      style: TextStyle(
-                        fontSize: isSmallScreen ? 14 : 18,
-                        fontFamily: FontFamily.openSans,
-                        height: 1.3,
-                        fontStyle: FontStyle.italic,
+                          Container(
+                            height: 20,
+                            color: AppColors.primaryText,
+                            width: 1,
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                          ),
+                          Text(
+                            '27\n05',
+                            style: TextStyle(
+                              fontSize: isSmallScreen ? 28 : 46,
+                              fontFamily: FontFamily.openSans,
+                              color: AppColors.primaryText,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Container(
+                            height: 20,
+                            color: AppColors.primaryText,
+                            width: 1,
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                          ),
+                          Text(
+                            '2023',
+                            style: dateStyle,
+                          ),
+                        ],
                       ),
-                    ),
-                    SizedBox(height: isSmallScreen ? 90 : 130),
-                  ],
+                      const SizedBox(height: 10),
+                      Text(
+                        '(Tức ngày 09-04 năm Quý Mão)',
+                        style: TextStyle(
+                          fontSize: isSmallScreen ? 14 : 16,
+                          fontFamily: FontFamily.openSans,
+                          height: 1.3,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -149,8 +149,7 @@ class Time extends StatelessWidget {
                               text: 'Nhà trai\n\n',
                               children: [
                                 TextSpan(
-                                  text:
-                                      'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text: 'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -204,8 +203,7 @@ class Time extends StatelessWidget {
                               text: 'Nhà gái\n\n',
                               children: [
                                 TextSpan(
-                                  text:
-                                      'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text: 'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
