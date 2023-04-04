@@ -41,7 +41,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<LandingPageState> _landingKey = GlobalKey();
-  final PreloadPageController _controller = PreloadPageController(initialPage: 1);
+  final PreloadPageController _controller = PreloadPageController();
 
   @override
   void initState() {
