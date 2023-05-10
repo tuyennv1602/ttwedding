@@ -149,7 +149,7 @@ class Time extends StatelessWidget {
                               text: 'Nhà trai\n\n',
                               children: [
                                 TextSpan(
-                                  text: 'Xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text: 'Xóm 3, xã Giao Long, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -173,7 +173,7 @@ class Time extends StatelessWidget {
                               );
                             },
                             child: const Text(
-                              'Xem bản đồ →',
+                              'Xem bản đồ',
                               style: TextStyle(
                                 fontFamily: FontFamily.openSans,
                                 fontStyle: FontStyle.italic,
@@ -203,7 +203,7 @@ class Time extends StatelessWidget {
                               text: 'Nhà gái\n\n',
                               children: [
                                 TextSpan(
-                                  text: 'Xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text: 'Xóm 15, xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
@@ -227,7 +227,7 @@ class Time extends StatelessWidget {
                               );
                             },
                             child: const Text(
-                              'Xem bản đồ →',
+                              'Xem bản đồ',
                               style: TextStyle(
                                 fontFamily: FontFamily.openSans,
                                 fontStyle: FontStyle.italic,

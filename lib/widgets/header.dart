@@ -14,8 +14,6 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallScreen = context.isSmallScreen;
-    final bigText = isSmallScreen ? 64.0 : 80.0;
     return SizedBox(
       width: double.infinity,
       child: Stack(
@@ -29,58 +27,10 @@ class Header extends StatelessWidget {
                 gradient: LinearGradient(
                   colors: [
                     Colors.white.withOpacity(0.8),
-                    Colors.white.withOpacity(0.3),
+                    Colors.white.withOpacity(0.2),
                   ],
                   begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            child: Padding(
-              padding: EdgeInsets.only(bottom: bigText),
-              child: Text(
-                'Save',
-                style:
-                    TextStyle(color: AppColors.primaryText, fontSize: bigText),
-              ),
-            ),
-          ),
-          Positioned(
-            child: Padding(
-              padding: EdgeInsets.only(left: isSmallScreen ? 50 : 60, top: 20),
-              child: Text(
-                'the',
-                style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontSize: isSmallScreen ? 35 : 40),
-              ),
-            ),
-          ),
-          Positioned(
-            child: Padding(
-              padding: EdgeInsets.only(top: bigText),
-              child: Text(
-                'Date',
-                style:
-                    TextStyle(color: AppColors.primaryText, fontSize: bigText),
-              ),
-            ),
-          ),
-          Positioned(
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: bigText * 2,
-                left: isSmallScreen ? 50 : 60,
-              ),
-              child: Text(
-                '27-05-2023',
-                style: TextStyle(
-                  color: AppColors.primaryText,
-                  fontSize: isSmallScreen ? 14 : 18,
-                  fontFamily: FontFamily.openSans,
-                  fontStyle: FontStyle.italic,
+                  end: Alignment.center,
                 ),
               ),
             ),

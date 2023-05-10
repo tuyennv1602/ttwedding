@@ -4,6 +4,7 @@ import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:my_wedding/colors.dart';
 import 'package:my_wedding/extension.dart';
 import 'package:my_wedding/gen/fonts.gen.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Album extends StatelessWidget {
   const Album({Key? key}) : super(key: key);
@@ -12,9 +13,10 @@ class Album extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSmallScreen = context.isSmallScreen;
     const List<String> images = [
-      'https://znews-photo.zingcdn.me/w660/Uploaded/qfssu/2022_10_16/312010655_10228605456097461_7980653090286460139_n.jpg',
-      'https://phunuvietnam.mediacdn.vn/179072216278405120/2023/1/7/3230529447341916211575271568471375277054775n-1673059263629352442406.jpg',
-      'https://i1-ngoisao.vnecdn.net/2022/10/17/ALI18447-1665992336.png?w=460&h=0&q=100&dpr=2&fit=crop&s=CdSWrJl8XY7e9i0Nr76gUA',
+      'https://i.ibb.co/rpLqTdz/017-018.jpg',
+      'https://i.ibb.co/ft7hPtX/007-008.jpg',
+      'https://i.ibb.co/71f8kNS/013-014.jpg',
+      'https://i.ibb.co/g6PMGXt/009-010.jpg',
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,6 +71,12 @@ class Album extends StatelessWidget {
         ),
         Center(
           child: InkWell(
+            onTap: () {
+              launchUrlString(
+                'https://drive.google.com/drive/folders/10v8_ZQqzIxxksMgI8FnCPtr4AYykzwlE?usp=share_link',
+                mode: LaunchMode.externalApplication,
+              );
+            },
             child: Container(
               decoration: BoxDecoration(
                 color: AppColors.backgroundShadow,
@@ -78,8 +86,7 @@ class Album extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: const Text(
                 'Xem đầy đủ album',
-                style: TextStyle(
-                    fontFamily: FontFamily.openSans, color: Colors.white),
+                style: TextStyle(fontFamily: FontFamily.openSans, color: Colors.white),
               ),
             ),
           ),

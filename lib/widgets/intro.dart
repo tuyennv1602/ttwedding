@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:action_slider/action_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,8 @@ import 'package:lottie/lottie.dart';
 import 'package:my_wedding/colors.dart';
 import 'package:my_wedding/extension.dart';
 import 'package:my_wedding/gen/assets.gen.dart';
+import 'package:my_wedding/gen/fonts.gen.dart';
+import 'package:my_wedding/widgets/tt.dart';
 
 class IntroPage extends StatefulWidget {
   final double width;
@@ -24,6 +28,8 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   late final AnimationController _controller;
   final ValueNotifier<bool> _slideDone = ValueNotifier(false);
   bool _isLoading = true;
+  bool _isDisplayGuide = false;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -35,6 +41,11 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
           widget.onDone();
         }
       });
+    _timer = Timer.periodic(const Duration(seconds: 5), (_) {
+      setState(() {
+        _isDisplayGuide = !_isDisplayGuide;
+      });
+    });
   }
 
   @override
@@ -52,6 +63,8 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
 
   @override
   void dispose() {
+    _timer?.cancel();
+
     _controller.dispose();
     super.dispose();
   }
@@ -60,6 +73,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final isSmallScreen = context.isSmallScreen;
     final slideWidth = isSmallScreen ? widget.width - 60 : widget.width * 0.7;
+    final bigText = isSmallScreen ? 64.0 : 80.0;
     return Scaffold(
       body: Stack(
         children: [
@@ -72,8 +86,63 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Assets.images.happyWedding.image(width: slideWidth * 0.6),
-              const SizedBox(height: 100),
+              Transform.translate(
+                offset: const Offset(0, -20),
+                child: Transform.scale(
+                  scale: 1.1,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: bigText),
+                          child: Text(
+                            'Save',
+                            style: TextStyle(color: AppColors.primaryText, fontSize: bigText),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        child: Padding(
+                          padding: EdgeInsets.only(left: isSmallScreen ? 50 : 60, top: 20),
+                          child: Text(
+                            'the',
+                            style: TextStyle(
+                                color: AppColors.primaryText, fontSize: isSmallScreen ? 35 : 40),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: bigText),
+                          child: Text(
+                            'Date',
+                            style: TextStyle(color: AppColors.primaryText, fontSize: bigText),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: bigText * 2,
+                            left: isSmallScreen ? 50 : 60,
+                          ),
+                          child: Text(
+                            '27-05-2023',
+                            style: TextStyle(
+                              color: AppColors.primaryText,
+                              fontSize: isSmallScreen ? 14 : 18,
+                              fontFamily: FontFamily.openSans,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 50),
               SizedBox(
                 width: widget.width,
                 child: Stack(
@@ -137,7 +206,11 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                 toggleColor: AppColors.backgroundShadow,
                 iconAlignment: Alignment.centerRight,
                 successIcon: SizedBox(width: 55, child: Center(child: Assets.images.heart.image())),
-                icon: SizedBox(width: 55, child: Center(child: Assets.images.heart.image())),
+                icon: const Icon(
+                  Icons.arrow_circle_right,
+                  size: 55,
+                  color: Colors.white,
+                ),
                 backgroundColor: Colors.white,
                 boxShadow: const [
                   BoxShadow(
@@ -146,7 +219,11 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                   )
                 ],
                 action: (controller) async {
+                  setState(() {
+                    _isDisplayGuide = false;
+                  });
                   controller.success();
+                  _timer?.cancel();
                   _slideDone.value = true;
                   _controller
                     ..duration = const Duration(seconds: 5)
@@ -156,11 +233,26 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                   _slidePercent.value = state.position;
                 },
                 child: Text(
-                  'Vuốt để mở thiệp nhé!',
+                  'Happy Wedding',
                   style: TextStyle(
                     color: AppColors.backgroundShadow,
                     fontSize: isSmallScreen ? 28 : 32,
                     fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.italic,
+                    height: 1,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 15),
+              AnimatedOpacity(
+                opacity: _isDisplayGuide ? 1 : 0,
+                duration: const Duration(seconds: 1),
+                child: const Text(
+                  '→ Vuốt mũi tên sang phải để mở thiệp nhé ^.^',
+                  style: TextStyle(
+                    fontFamily: FontFamily.openSans,
+                    fontStyle: FontStyle.italic,
+                    color: AppColors.primary,
                   ),
                 ),
               ),

@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:my_wedding/colors.dart';
 import 'package:my_wedding/extension.dart';
 import 'package:my_wedding/gen/assets.gen.dart';
+import 'package:my_wedding/widgets/tt.dart';
 
 class TheName extends StatelessWidget {
   final AnimationController controller;
@@ -25,12 +26,11 @@ class TheName extends StatelessWidget {
             fit: BoxFit.contain,
             controller: controller,
           ),
-          Text(
-            'TT ',
-            style: TextStyle(
-              fontSize: isSmallScreen ? 50 : 80,
-              color: AppColors.primaryText,
-              fontWeight: FontWeight.w700,
+          Transform.translate(
+            offset: const Offset(-10, -10),
+            child: Transform.scale(
+              scale: 0.7,
+              child: const TT(),
             ),
           )
         ],
