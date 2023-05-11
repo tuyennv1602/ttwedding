@@ -203,7 +203,8 @@ class Time extends StatelessWidget {
                               text: 'Nhà gái\n\n',
                               children: [
                                 TextSpan(
-                                  text: 'Xóm 15, xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
+                                  text:
+                                      'Xóm Hoành Tam, xã Hoành Sơn, huyện Giao Thuỷ, tỉnh Nam Định',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     height: 1.2,
