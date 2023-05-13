@@ -24,8 +24,7 @@ class LandingPage extends StatefulWidget {
   State<LandingPage> createState() => LandingPageState();
 }
 
-class LandingPageState extends State<LandingPage>
-    with TickerProviderStateMixin {
+class LandingPageState extends State<LandingPage> with TickerProviderStateMixin {
   late final AnimationController _controller;
   String name = 'Bạn cùng người thương';
 
@@ -124,6 +123,7 @@ class LandingPageState extends State<LandingPage>
                     ),
                     const SizedBox(height: 20),
                     Banking(width: widget.width),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
